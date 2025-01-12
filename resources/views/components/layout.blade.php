@@ -13,10 +13,22 @@
     <header>
         <nav>
             <a href="{{ route('home') }}" class="nav-link">Home</a>
-            <div class="flex items-center gap-4">
-                <a href="{{ route('login') }}" class="nav-link">Login</a>
-                <a href="{{ route('register') }}" class="nav-link">Register</a>
-            </div>
+
+            @auth
+                <div class="relative grid place-items-center">
+                    {{-- Dropdown menu button --}}
+                    <button type="button" class="round-btn">
+                        <img src="https://picsum.photos/200" alt="">
+                    </button>
+                </div>
+            @endauth
+
+            @guest
+                <div class="flex items-center gap-4">
+                    <a href="{{ route('login') }}" class="nav-link">Login</a>
+                    <a href="{{ route('register') }}" class="nav-link">Register</a>
+                </div>
+            @endguest
         </nav>
     </header>
     <main>
