@@ -32,6 +32,9 @@
                 <input type="checkbox" name="remember" id="remember">
                 <label for="remember">Remember Me</label>
             </div>
+            @error('failed')
+                <p class="error">{{ $message }}</p>
+            @enderror
 
             {{-- Submit Button --}}
             <button class="primary-btn" type="submit">Register</button>
