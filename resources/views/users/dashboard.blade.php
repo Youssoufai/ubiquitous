@@ -4,18 +4,23 @@
     <div class="card mb-4">
         <h2 class="font-bold mb-4">Create a new post</h2>
         {{-- Session Messages --}}
+
+
         @if (session('success'))
-            <div>
+            <div class="mb-2">
+                <x-flashMsg msg="{{ session('success') }}" />
                 <p> {{ session('success') }} </p>
             </div>
         @endif
+
+
         <form action=" {{ route('posts.store') }} " method="POST">
             @csrf
             {{-- Post Title --}}
             <div class="mb-4">
                 <label for="title">Post Title</label>
-                <input type="text" name="title" placeholder="Post" class="input @error('title') ring-red-500 @enderror"
-                    value="{{ old('email') }}">
+                <input type="text" name="title" placeholder="Post"
+                    class="input @error('title') ring-red-500 @enderror" value="{{ old('email') }}">
                 @error('title')
                     <p class="error">{{ $message }}</p>
                 @enderror
@@ -30,4 +35,8 @@
             </div>
         </form>
     </div>
+
+    {{-- Your Latest Posts --}}
+
+
 </x-layout>
