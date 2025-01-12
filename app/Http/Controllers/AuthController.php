@@ -43,4 +43,19 @@ class AuthController extends Controller
             ]);
         };
     }
+
+    public function logout(Request $request)
+    {
+        // Logout
+        Auth::logout();
+
+        // Invalidate user's session
+        $request->session()->invalidate();
+
+        // Regenerate csrf token
+        $request->session()->regenerateToken();
+
+        // redirect to homepage
+        return redirect('/');
+    }
 }
