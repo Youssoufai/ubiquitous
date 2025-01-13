@@ -40,7 +40,12 @@
 
     <div class="grid grid-cols 2 gap-6">
         @foreach ($posts as $post)
-            <x-postCard :post="$post" />
+            <x-postCard :post="$post">
+                <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                    @csrf
+                    <button class="bg-red-500 text-white px-2 py-1 text-xs rounded-md">Delete</button>
+                </form>
+            </x-postCard>
         @endforeach
     </div>
 
